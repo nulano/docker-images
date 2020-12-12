@@ -50,7 +50,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -qyy debootstrap
           if [ "${{ matrix.target }}" = "latest" ]; then
             git submodule update --remote Pillow
-            (cd Pillow && git checkout master)
+            (cd Pillow && git fetch origin gha-qus-4:gha-qus-4 && git checkout gha-qus-4)
           fi
           sudo chown -R 1000 $(pwd)
 
