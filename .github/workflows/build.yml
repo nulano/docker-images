@@ -69,10 +69,7 @@ jobs:
           docker images
 
       - name: Push image
-        if: "steps.build.outputs.logged_in == 'true'
-                           && github.event_name == 'push'
-                           && github.ref == 'refs/heads/master'
-                           && matrix.target == 'stable'"
+        if: "always() && matrix.target == 'stable'"
         run: make push-${{ matrix.image }} BRANCH=master
 
       - name: Post build
